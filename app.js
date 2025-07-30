@@ -1,11 +1,21 @@
+//Declarando Variaveis
 let nomesEscolhidos = []
+let nomesInput = document.getElementById('amigo');
 
+//Atalho para adicionar nomes usando o "Enter"
+nomesInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        adicionarAmigo();
+    }
+})
+
+//Funcao para adicionar amigos
 function adicionarAmigo() {
-    let nomesInput = document.getElementById('amigo');
     let nomeFormatado = nomesInput.value.trim();
 
     if (nomeFormatado === "") {
         alert("Por favor, insira um nome.");
+        return;
     }
 
     if (nomesEscolhidos.includes(nomeFormatado)){
@@ -18,7 +28,7 @@ function adicionarAmigo() {
             }
     };
 
-
+//Funcao atualizar lista de amigos adicionados
 function atualizarLista() {
     let listaShow = document.getElementById('listaAmigos');
     listaShow.innerHTML = "";
@@ -31,6 +41,18 @@ function atualizarLista() {
 
 }
 
+//Funcao sortear amigos
 function sortearAmigo() {
+    if (nomesEscolhidos.length === 0) {
+        alert("Nenhum amigo foi adicionado para o sorteio!");
+        return;
+    }
+    
+    let indiceSorteado = Math.floor(Math.random() * nomesEscolhidos.length);
+    let nomeSorteado = nomesEscolhidos[indiceSorteado];
+
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = `Amigo sorteado: <strong><u>${nomeSorteado}</u></strong>`;
+
 
 };
