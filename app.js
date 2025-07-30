@@ -1,0 +1,5 @@
+let nomesEscolhidos = []
+
+sortearAmigo()
+
+adicionarAmigo()
